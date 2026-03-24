@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road to Milan — Posts</title>
+<style>
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #06060a;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 32px;
+  }
+  h1 {
+    text-align: center;
+    color: #ff4d1a;
+    margin-bottom: 32px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: auto;
+  }
+  li {
+    margin-bottom: 20px;
+    background: #0a0c10;
+    padding: 16px 20px;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255,77,26,0.3);
+  }
+  a {
+    color: #ff7a56;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .date {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Road to Milan — Mis Posts</h1>
+
+<ul>
+  <li>
+    <a href="posts/2026-03-running-data/index.html">Registro cada entreno — Visualizo cada kilómetro</a>
+    <div class="date">Marzo 2026</div>
+  </li>
+  <li>
+    <a href="posts/2026-03-automatizacion/index.html">Cómo automaticé el registro de cada entreno</a>
+    <div class="date">Marzo 2026</div>
+  </li>
+  <li>
+    <a href="posts/2026-03-insights-pre-milan/index.html">Lo que dicen mis datos a 2 semanas del maratón</a>
+    <div class="date">Abril 2026</div>
+  </li>
+  <li>
+    <a href="posts/2026-04-plan-milan/index.html">Mi plan de carrera para Milán en un gráfico</a>
+    <div class="date">Abril 2026</div>
+  </li>
+  <li>
+    <a href="posts/2026-04-maraton-milan/index.html">42.195 metros en datos — mi maratón de Milán diseccionada</a>
+    <div class="date">Abril 2026</div>
+  </li>
+</ul>
+
+</body>
+</html>
