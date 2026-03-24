@@ -1,1 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800&family=Space+Mono:wght@400;700&display=swap');
 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #06060a;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 32px 16px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .card {
+    width: 1080px; height: 1080px;
+    background: #0a0c10;
+    border-radius: 12px; overflow: hidden;
+    position: relative; display: flex; flex-direction: column;
+  }
+  .card::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 36px 36px; pointer-events: none; z-index: 0;
+  }
+
+  .glow1 { position:absolute; top:-80px; right:-80px; width:350px; height:350px; background:radial-gradient(circle, rgba(255,77,26,0.07) 0%, transparent 70%); pointer-events:none; z-index:0; }
+  .glow2 { position:absolute; bottom:-60px; left:-60px; width:280px; height:280px; background:radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%); pointer-events:none; z-index:0; }
+
+  .inner { position: relative; z-index: 1; padding: 48px 56px; flex: 1; display: flex; flex-direction: column; }
+
+  /* HEADER */
+  .tag { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#ff4d1a; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+  .tag::before { content:''; width:20px; height:1px; background:#ff4d1a; }
+  h1 { font-size:38px; font-weight:800; color:#f0f0f0; line-height:1.12; letter-spacing:-0.5px; max-width:750px; }
+  h1 span { color:#ff4d1a; }
+  .subtitle { font-size:15px; color:#6b7280; margin-top:10px; font-weight:300; max-width:650px; line-height:1.5; }
+
+  /* BIG NUMBERS */
+  .numbers { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin:28px 0 24px; border:1px solid rgba(255,255,255,0.06); border-radius:10px; overflow:hidden; background:rgba(255,255,255,0.015); }
+  .num-card { padding:22px 20px; text-align:center; position:relative; }
+  .num-card:not(:last-child)::after { content:''; position:absolute; right:0; top:18%; height:64%; width:1px; background:rgba(255,255,255,0.06); }
+  .num-val { font-family:'Space Mono',monospace; font-size:38px; font-weight:700; color:#fff; line-height:1; }
+  .num-val .u { font-size:15px; color:#4b5563; font-weight:400; }
+  .num-label { font-size:10px; text-transform:uppercase; letter-spacing:1.8px; color:#4b5563; margin-top:6px; }
+
+  /* YEAR BARS */
+  .section-label { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#374151; margin-bottom:12px; }
+  .year-row { display:grid; grid-template-columns:60px 1fr 70px; gap:12px; align-items:center; margin-bottom:5px; }
+  .year-label { font-family:'Space Mono',monospace; font-size:13px; font-weight:700; color:#9ca3af; }
+  .year-bar-wrap { height:18px; background:rgba(255,255,255,0.03); border-radius:3px; overflow:hidden; position:relative; }
+  .year-bar { height:100%; border-radius:3px; position:relative; }
+  .year-bar .bar-label { position:absolute; right:8px; top:50%; transform:translateY(-50%); font-family:'Space Mono',monospace; font-size:9px; color:rgba(255,255,255,0.7); }
+  .year-km { font-family:'Space Mono',monospace; font-size:12px; font-weight:700; color:#fff; text-align:right; }
+
+  /* DUAL ROW */
+  .dual-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:24px 0 0; flex:1; }
+  .insight-box { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:20px 22px; display:flex; flex-direction:column; }
+  .insight-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+  .insight-title { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#4b5563; }
+  .insight-highlight { font-family:'Space Mono',monospace; font-size:12px; font-weight:700; }
+
+  .chart-area { flex:1; position:relative; display:flex; flex-direction:column; }
+  .mini-bars { display:flex; align-items:flex-end; gap:3px; flex:1; }
+  .mini-bar { flex:1; border-radius:2px 2px 0 0; min-width:3px; position:relative; }
+  .bar-x-labels { display:flex; justify-content:space-between; margin-top:6px; }
+  .bar-x-labels span { font-family:'Space Mono',monospace; font-size:8px; color:#374151; }
+
+  .hr-x-labels { display:flex; justify-content:space-between; margin-top:6px; }
+  .hr-x-labels span { font-family:'Space Mono',monospace; font-size:8px; color:#374151; }
+
+  /* FOOTER */
+  .footer { display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:18px; border-top:1px solid rgba(255,255,255,0.06); }
+  .author { display:flex; align-items:center; gap:12px; }
+  .avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg, #ff4d1a, #ff8c42); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#fff; }
+  .author-name { font-size:14px; font-weight:600; color:#d1d5db; }
+  .author-sub { font-size:11px; color:#4b5563; }
+  .tags { display:flex; gap:8px; }
+  .htag { font-family:'Space Mono',monospace; font-size:10px; padding:5px 10px; border-radius:16px; border:1px solid rgba(255,255,255,0.08); color:#6b7280; letter-spacing:0.5px; }
+  .htag.accent { background:rgba(255,77,26,0.12); border-color:rgba(255,77,26,0.3); color:#ff7a56; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="inner">
+
+    <div class="tag">Data × Running — 4 años en datos</div>
+    <h1>Registro cada entreno. <span>Visualizo cada kilómetro.</span></h1>
+    <p class="subtitle">237 carreras, 2.056 km, 4 años de datos reales. Esto es lo que pasa cuando un ingeniero empieza a correr y mide todo.</p>
+
+    <div class="numbers">
+      <div class="num-card">
+        <div class="num-val">2.056<span class="u"> km</span></div>
+        <div class="num-label">Total corridos</div>
+      </div>
+      <div class="num-card">
+        <div class="num-val">237</div>
+        <div class="num-label">Carreras</div>
+      </div>
+      <div class="num-card">
+        <div class="num-val">185<span class="u"> h</span></div>
+        <div class="num-label">En movimiento</div>
+      </div>
+      <div class="num-card">
+        <div class="num-val">32<span class="u"> km</span></div>
+        <div class="num-label">Longest run</div>
+      </div>
+    </div>
+
+    <!-- YEAR EVOLUTION — equidistant -->
+    <div class="section-label">Evolución por año</div>
+    <div id="yearBars"></div>
+
+    <!-- DUAL INSIGHTS -->
+    <div class="dual-row">
+      <div class="insight-box">
+        <div class="insight-header">
+          <span class="insight-title">Volumen semanal (km)</span>
+          <span class="insight-highlight" style="color:#ff4d1a">68 km pico ↑</span>
+        </div>
+        <div class="chart-area">
+          <div class="mini-bars" id="weeklyBars"></div>
+          <div class="bar-x-labels" id="weekLabels"></div>
+        </div>
+      </div>
+      <div class="insight-box">
+        <div class="insight-header">
+          <span class="insight-title">FC media por trimestre (bpm)</span>
+          <span class="insight-highlight" style="color:#22c55e">177 → 155 bpm ↓</span>
+        </div>
+        <div class="chart-area">
+          <svg id="hrChart" viewBox="0 0 440 90" style="width:100%;flex:1;overflow:visible"></svg>
+          <div class="hr-x-labels" id="hrLabels"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="author">
+        <div class="avatar">AS</div>
+        <div>
+          <div class="author-name">Alejandro Suárez</div>
+          <div class="author-sub">Ingeniero · Corredor · Data nerd</div>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="htag">#DataVisualization</span>
+        <span class="htag">#Running</span>
+        <span class="htag accent">🏃 Road to Milan</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── YEAR BARS — equidistant, no '3 meses' note ──
+const years = [
+  { year: '2022', km: 20, runs: 5, color: 'rgba(255,255,255,0.15)' },
+  { year: '2023', km: 122, runs: 24, color: 'rgba(59,130,246,0.45)' },
+  { year: '2024', km: 505, runs: 65, color: 'rgba(59,130,246,0.65)' },
+  { year: '2025', km: 876, runs: 103, color: 'rgba(255,77,26,0.7)' },
+  { year: '2026', km: 532, runs: 40, color: '#ff4d1a' },
+];
+const maxKm = Math.max(...years.map(y => y.km));
+const ybEl = document.getElementById('yearBars');
+years.forEach(y => {
+  const pct = (y.km / maxKm * 100).toFixed(1);
+  ybEl.innerHTML += `
+    <div class="year-row">
+      <div class="year-label">${y.year}</div>
+      <div class="year-bar-wrap">
+        <div class="year-bar" style="width:${pct}%;background:${y.color}">
+          ${y.km > 60 ? `<span class="bar-label">${y.runs} runs</span>` : ''}
+        </div>
+      </div>
+      <div class="year-km">${y.km} km</div>
+    </div>`;
+});
+
+// ── WEEKLY VOLUME — with date labels ──
+const weeklyData = [
+  { week: '29 dic', km: 26.4 },
+  { week: '5 ene', km: 36.4 },
+  { week: '12 ene', km: 31.6 },
+  { week: '19 ene', km: 38.6 },
+  { week: '26 ene', km: 28.9 },
+  { week: '2 feb', km: 41.5 },
+  { week: '9 feb', km: 59.0 },
+  { week: '16 feb', km: 58.1 },
+  { week: '23 feb', km: 61.6 },
+  { week: '2 mar', km: 23.9 },
+  { week: '9 mar', km: 66.2 },
+  { week: '16 mar', km: 68.2 },
+];
+const maxW = Math.max(...weeklyData.map(w => w.km));
+const wbEl = document.getElementById('weeklyBars');
+const wlEl = document.getElementById('weekLabels');
+
+weeklyData.forEach((w, i) => {
+  const bar = document.createElement('div');
+  bar.className = 'mini-bar';
+  bar.style.height = `${(w.km / maxW * 100).toFixed(0)}%`;
+  // gradient from blue → orange → bright as weeks progress
+  const t = i / (weeklyData.length - 1);
+  if (t < 0.33) bar.style.background = 'rgba(59,130,246,0.55)';
+  else if (t < 0.66) bar.style.background = `rgba(255,${Math.round(140 - t*80)},${Math.round(60 - t*30)},0.7)`;
+  else bar.style.background = '#ff4d1a';
+  bar.title = `${w.week}: ${w.km} km`;
+  wbEl.appendChild(bar);
+});
+
+// X axis labels — show every 3rd
+weeklyData.forEach((w, i) => {
+  if (i % 3 === 0 || i === weeklyData.length - 1) {
+    wlEl.innerHTML += `<span>${w.week}</span>`;
+  }
+});
+
+// ── HR EVOLUTION — with quarter labels on X axis ──
+const hrData = [
+  { q:'Q4 \'23', bpm:177 },
+  { q:'Q1 \'24', bpm:177 },
+  { q:'Q2 \'24', bpm:175 },
+  { q:'Q3 \'24', bpm:171 },
+  { q:'Q4 \'24', bpm:174 },
+  { q:'Q1 \'25', bpm:165 },
+  { q:'Q2 \'25', bpm:163 },
+  { q:'Q3 \'25', bpm:157 },
+  { q:'Q4 \'25', bpm:161 },
+  { q:'Q1 \'26', bpm:155 },
+];
+const svg = document.getElementById('hrChart');
+const minBpm = 148, maxBpm = 182;
+const cw = 440, ch = 80, pad = 10;
+
+const points = hrData.map((d, i) => {
+  const x = pad + (i / (hrData.length - 1)) * (cw - pad * 2);
+  const y = pad + ((maxBpm - d.bpm) / (maxBpm - minBpm)) * (ch - pad * 2);
+  return { x, y, ...d };
+});
+
+const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ');
+const areaPath = linePath + ` L${points[points.length-1].x},${ch} L${points[0].x},${ch} Z`;
+
+svg.innerHTML = `
+  <defs>
+    <linearGradient id="hrGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(34,197,94,0.15)"/>
+      <stop offset="100%" stop-color="rgba(34,197,94,0)"/>
+    </linearGradient>
+  </defs>
+  <path d="${areaPath}" fill="url(#hrGrad)"/>
+  <path d="${linePath}" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  ${points.map((p, i) => `
+    <circle cx="${p.x}" cy="${p.y}" r="${i === 0 || i === points.length-1 ? 5 : 3}"
+      fill="${i === points.length-1 ? '#22c55e' : i === 0 ? '#ef4444' : 'rgba(34,197,94,0.5)'}"
+      stroke="${i === 0 || i === points.length-1 ? '#0a0c10' : 'none'}" stroke-width="2"/>
+    ${i === 0 ? `<text x="${p.x+8}" y="${p.y-8}" font-family="Space Mono,monospace" font-size="9" fill="#ef4444" font-weight="700">${p.bpm}</text>` : ''}
+    ${i === points.length-1 ? `<text x="${p.x-8}" y="${p.y-8}" text-anchor="end" font-family="Space Mono,monospace" font-size="9" fill="#22c55e" font-weight="700">${p.bpm}</text>` : ''}
+  `).join('')}
+`;
+
+// HR X axis labels
+const hlEl = document.getElementById('hrLabels');
+hrData.forEach((d, i) => {
+  if (i % 2 === 0 || i === hrData.length - 1) {
+    hlEl.innerHTML += `<span>${d.q}</span>`;
+  }
+});
+</script>
+</body>
+</html>
