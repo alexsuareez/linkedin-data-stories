@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maratón de Milán 2026 — Estrategia</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&family=Space+Mono:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #04060a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── CARD ── */
+  .card {
+    width: 1080px;
+    height: 1080px;
+    background: #080c12;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* top accent */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: #ff4d1a;
+    z-index: 10;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 28px 36px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+
+  .header-left {}
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    color: #ff4d1a;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.3px;
+    line-height: 1.15;
+  }
+
+  /* zone legend */
+  .legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 22px;
+    align-items: center;
+    padding-top: 4px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .legend-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-label {
+    font-size: 10.5px;
+    color: #6b7e94;
+    white-space: nowrap;
+  }
+
+  /* ── MAIN BODY ── */
+  .body {
+    display: flex;
+    flex: 1;
+    padding: 14px 18px 0 18px;
+    gap: 14px;
+    min-height: 0;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    height: 100%;
+  }
+
+  /* Column widths */
+  col.c-tramo   { width: 120px; }
+  col.c-ritmo   { width: 90px; }
+  col.c-parcial { width: 76px; }
+  col.c-total   { width: 84px; }
+  col.c-fc      { width: 100px; }
+  col.c-zona    { width: 58px; }
+  col.c-sens    { width: auto; }
+
+  thead th {
+    font-size: 9px;
+    font-weight: 700;
+    color: #4a5e72;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    padding: 0 0 8px 6px;
+    text-align: left;
+    border-bottom: 1px solid #1a2535;
+  }
+
+  thead th.center { text-align: center; }
+
+  tbody tr {
+    border-bottom: 1px solid #111b27;
+  }
+
+  tbody tr:nth-child(odd) {
+    background: rgba(13, 24, 34, 0.6);
+  }
+
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  tbody td {
+    padding: 0 6px;
+    vertical-align: middle;
+  }
+
+  tbody tr {
+    height: calc((100% - 44px) / 9);
+  }
+
+  .td-tramo {
+    font-size: 11px;
+    font-weight: 700;
+    color: #c8d6e0;
+    letter-spacing: 0.2px;
+  }
+
+  .td-ritmo {
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+  }
+
+  .td-parcial, .td-total {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: #7a8fa0;
+    text-align: center;
+  }
+
+  .td-fc {
+    text-align: center;
+  }
+
+  .fc-pill {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid;
+    white-space: nowrap;
+  }
+
+  .td-zona {
+    text-align: center;
+  }
+
+  .zona-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .td-sens {
+    font-size: 11px;
+    color: #6b7e94;
+    padding-left: 8px;
+  }
+
+  /* total row */
+  .total-row {
+    border-top: 2px solid #ff4d1a !important;
+    border-bottom: none !important;
+    background: transparent !important;
+  }
+
+  .total-row td {
+    height: 44px;
+    padding-top: 2px;
+  }
+
+  .total-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #4a5e72;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .total-avg {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: #8a9fb2;
+    text-align: center;
+  }
+
+  .total-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ff4d1a;
+    text-align: center;
+  }
+
+  .total-target {
+    font-size: 12px;
+    font-weight: 700;
+    color: #34d399;
+    text-align: center;
+  }
+
+  /* ── RIGHT COLUMN ── */
+  .right-col {
+    width: 188px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-bottom: 0;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #4a5e72;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1a2535;
+  }
+
+  .parciales {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 14px;
+  }
+
+  .parcial-item {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid #111b27;
+  }
+
+  .parcial-item:last-child { border-bottom: none; }
+
+  .parcial-bar {
+    width: 5px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .parcial-info {}
+
+  .parcial-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #4a5e72;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .parcial-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+
+  /* target box */
+  .target-box {
+    background: rgba(255, 77, 26, 0.1);
+    border: 1px solid rgba(255, 77, 26, 0.35);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+
+  .target-eyebrow {
+    font-size: 8.5px;
+    font-weight: 700;
+    color: #ff4d1a;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .target-value {
+    font-size: 26px;
+    font-weight: 800;
+    color: #ff4d1a;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .target-sub {
+    font-size: 10px;
+    color: rgba(255,77,26,0.7);
+  }
+
+  /* notes */
+  .notes-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #4a5e72;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+
+  .notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .note-item {
+    font-size: 10px;
+    color: #6b7e94;
+    display: flex;
+    gap: 6px;
+  }
+
+  .note-item::before {
+    content: '—';
+    color: #2a3f55;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 62px;
+    background: #060a0f;
+    border-top: 1px solid #1a2535;
+    flex-shrink: 0;
+    margin-top: auto;
+  }
+
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ff4d1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .author-sub {
+    font-size: 9.5px;
+    color: #4a5e72;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .htag {
+    font-size: 10px;
+    color: #6b7e94;
+    background: #111b27;
+    border: 1px solid #1e2e40;
+    border-radius: 4px;
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
+
+  .htag.accent {
+    background: #ff4d1a;
+    border-color: #ff4d1a;
+    color: #fff;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="eyebrow">Maratón de Milán 2026</div>
+      <div class="title">Estrategia de carrera &middot; Plan de splits</div>
+    </div>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#3b82f6"></div>
+        <span class="legend-label">Z2 Aeróbico</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#34d399"></div>
+        <span class="legend-label">Z3 Tempo</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#fbbf24"></div>
+        <span class="legend-label">Z4 Umbral</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#ef4444"></div>
+        <span class="legend-label">Z5 VO2max</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- TABLE -->
+    <div class="table-wrap">
+      <table>
+        <colgroup>
+          <col class="c-tramo">
+          <col class="c-ritmo">
+          <col class="c-parcial">
+          <col class="c-total">
+          <col class="c-fc">
+          <col class="c-zona">
+          <col class="c-sens">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Tramo</th>
+            <th class="center">Ritmo</th>
+            <th class="center">Parcial</th>
+            <th class="center">Total</th>
+            <th class="center">FC Obj.</th>
+            <th class="center">Zona</th>
+            <th>Sensación</th>
+          </tr>
+        </thead>
+        <tbody id="splits-body">
+          <!-- rows injected by JS — edit the splits array below -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-col">
+      <div class="section-label">Parciales clave</div>
+
+      <div class="parciales" id="parciales">
+        <!-- injected by JS -->
+      </div>
+
+      <div class="target-box">
+        <div class="target-eyebrow">Target</div>
+        <div class="target-value">Sub 3:30</div>
+        <div class="target-sub">Objetivo A</div>
+      </div>
+
+      <div class="notes-label">Notas</div>
+      <div class="notes-list">
+        <div class="note-item">Geles: km 18, 27, 35</div>
+        <div class="note-item">No acelerar antes del km 30</div>
+        <div class="note-item">Cadencia objetivo &gt;175 spm</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="author">
+      <div class="avatar">AS</div>
+      <div>
+        <div class="author-name">Alejandro Suárez</div>
+        <div class="author-sub">Engineer · Runner · Data</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span class="htag">#DataVisualization</span>
+      <span class="htag">#Running</span>
+      <span class="htag accent">🏃 Road to Milan</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ════════════════════════════════════════════
+// EDITA AQUÍ — splits de carrera
+// ════════════════════════════════════════════
+const splits = [
+  { tramo: "0 – 5 km",   ritmo: "5:05/km", parcial: "25:25", total: "0:25:25", fc: "145–150", zona: "Z2", zonaColor: "#3b82f6", sens: "Calma, sin agobios" },
+  { tramo: "5 – 10 km",  ritmo: "5:02/km", parcial: "25:10", total: "0:50:35", fc: "148–153", zona: "Z2", zonaColor: "#3b82f6", sens: "Entrando en ritmo" },
+  { tramo: "10 – 15 km", ritmo: "4:59/km", parcial: "24:55", total: "1:15:30", fc: "152–157", zona: "Z3", zonaColor: "#34d399", sens: "Cómodo, fluido" },
+  { tramo: "15 – 21 km", ritmo: "4:58/km", parcial: "29:48", total: "1:45:18", fc: "154–159", zona: "Z3", zonaColor: "#34d399", sens: "Control, no acelerar" },
+  { tramo: "21 – 25 km", ritmo: "4:57/km", parcial: "19:48", total: "2:05:06", fc: "156–161", zona: "Z3", zonaColor: "#34d399", sens: "A mitad, mantener" },
+  { tramo: "25 – 30 km", ritmo: "4:56/km", parcial: "24:40", total: "2:29:46", fc: "158–163", zona: "Z3", zonaColor: "#34d399", sens: "Crítico, foco total" },
+  { tramo: "30 – 35 km", ritmo: "4:55/km", parcial: "24:35", total: "2:54:21", fc: "160–165", zona: "Z4", zonaColor: "#fbbf24", sens: "Gestiona el muro" },
+  { tramo: "35 – 40 km", ritmo: "4:53/km", parcial: "24:25", total: "3:18:46", fc: "163–168", zona: "Z4", zonaColor: "#fbbf24", sens: "Todo lo que quede" },
+  { tramo: "40 – 42.2",  ritmo: "4:48/km", parcial: "10:33", total: "3:29:19", fc: "168–178", zona: "Z5", zonaColor: "#ef4444", sens: "Vaciar el depósito" },
+];
+
+const parciales = [
+  { label: "10K",   value: "50:35",   color: "#3b82f6" },
+  { label: "Media", value: "1:45:18", color: "#34d399" },
+  { label: "30K",   value: "2:29:46", color: "#fbbf24" },
+  { label: "40K",   value: "3:18:46", color: "#ef4444" },
+  { label: "Meta",  value: "3:29:19", color: "#ff4d1a" },
+];
+// ════════════════════════════════════════════
+
+// Render splits table
+const tbody = document.getElementById('splits-body');
+splits.forEach(r => {
+  const fcBg = r.zonaColor + '22';
+  const fcBorder = r.zonaColor + '66';
+  tbody.innerHTML += `
+    <tr>
+      <td class="td-tramo">${r.tramo}</td>
+      <td class="td-ritmo">${r.ritmo}</td>
+      <td class="td-parcial">${r.parcial}</td>
+      <td class="td-total">${r.total}</td>
+      <td class="td-fc">
+        <span class="fc-pill" style="color:${r.zonaColor};background:${fcBg};border-color:${fcBorder}">${r.fc}</span>
+      </td>
+      <td class="td-zona">
+        <span class="zona-dot" style="background:${r.zonaColor}22;border:1.5px solid ${r.zonaColor};color:${r.zonaColor}">${r.zona}</span>
+      </td>
+      <td class="td-sens">${r.sens}</td>
+    </tr>
+  `;
+});
+
+// Total row
+tbody.innerHTML += `
+  <tr class="total-row">
+    <td class="total-label">Total</td>
+    <td class="total-avg">~4:58/km avg</td>
+    <td></td>
+    <td class="total-time">3:29:19</td>
+    <td class="total-target" colspan="3">SUB 3:30 ✓</td>
+  </tr>
+`;
+
+// Render parciales
+const parcialesEl = document.getElementById('parciales');
+parciales.forEach(p => {
+  parcialesEl.innerHTML += `
+    <div class="parcial-item">
+      <div class="parcial-bar" style="background:${p.color}"></div>
+      <div class="parcial-info">
+        <div class="parcial-label">${p.label}</div>
+        <div class="parcial-value">${p.value}</div>
+      </div>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
