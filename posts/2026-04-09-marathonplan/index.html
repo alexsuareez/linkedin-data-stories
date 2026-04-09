@@ -2,70 +2,25 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Road to Milan — Slide 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road to Milan — Race Plan | Alejandro Suárez</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;800;900&family=Space+Mono:wght@400;700&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   background: #06060a;
-  display: flex;
-  justify-content: center;
-  padding: 32px 16px;
+  color: #f0f0f0;
   font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  padding: 60px 24px;
 }
-.card {
-  width: 1080px;
-  height: 1080px;
-  background: #0a0c10;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
 }
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 36px 36px;
-  z-index: 0;
-}
-.glow1 {
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255,77,26,0.12) 0%, transparent 70%);
-  z-index: 0;
-}
-.glow2 {
-  position: absolute;
-  bottom: -80px;
-  left: -80px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
-  z-index: 0;
-}
-
-.inner {
-  position: relative;
-  z-index: 1;
-  padding: 56px 60px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 36px;
+.header {
+  margin-bottom: 48px;
+  text-align: center;
 }
 .tag {
   font-family: 'Space Mono', monospace;
@@ -73,274 +28,153 @@ body {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #ff4d1a;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.tag::before {
-  content: '';
-  width: 20px;
-  height: 1px;
-  background: #ff4d1a;
-}
-.countdown {
-  text-align: right;
-}
-.cd-num {
-  font-family: 'Space Mono', monospace;
-  font-size: 48px;
-  font-weight: 700;
-  color: #ff4d1a;
-  line-height: 1;
-}
-.cd-lab {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #4b5563;
-  margin-top: 4px;
-}
-
-.pre {
-  font-family: 'Space Mono', monospace;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #4b5563;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 h1 {
-  font-size: 84px;
+  font-size: 48px;
   font-weight: 900;
-  color: #f0f0f0;
-  line-height: 0.92;
-  letter-spacing: -2.5px;
-  margin-bottom: 22px;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
 }
-h1 span {
-  color: #ff4d1a;
-}
-.sub {
-  font-size: 19px;
+h1 span { color: #ff4d1a; }
+.desc {
+  font-size: 16px;
   color: #9ca3af;
-  font-weight: 300;
+  max-width: 640px;
+  margin: 0 auto;
   line-height: 1.5;
-  max-width: 780px;
 }
-
-/* 5 Big numbers */
-.numbers {
+.slides {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  margin: 34px 0 0;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
-  background: rgba(255,255,255,0.015);
-  overflow: hidden;
-}
-.n {
-  padding: 22px 14px;
-  text-align: center;
-  position: relative;
-}
-.n:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 18%;
-  height: 64%;
-  width: 1px;
-  background: rgba(255,255,255,0.06);
-}
-.nv {
-  font-family: 'Space Mono', monospace;
-  font-size: 32px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1;
-}
-.nv .u {
-  font-size: 13px;
-  color: #4b5563;
-  font-weight: 400;
-}
-.nl {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.6px;
-  color: #4b5563;
-  margin-top: 6px;
-}
-
-/* Target box */
-.target {
-  margin-top: 20px;
-  background: linear-gradient(135deg, rgba(255,77,26,0.1), rgba(255,77,26,0.02));
-  border: 1px solid rgba(255,77,26,0.25);
-  border-radius: 12px;
-  padding: 22px 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.t-l {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  color: #ff7a56;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.t-v {
-  font-family: 'Space Mono', monospace;
-  font-size: 38px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1;
-}
-.t-badge {
-  background: #ff4d1a;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 24px;
-  font-family: 'Space Mono', monospace;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-/* Race info strip */
-.race-info {
-  display: flex;
+  grid-template-columns: 1fr 1fr;
   gap: 32px;
-  margin-top: auto;
-  padding-top: 24px;
+  margin-bottom: 48px;
+}
+.slide-card {
+  background: #0a0c10;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.slide-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,77,26,0.3);
+}
+.slide-frame {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  background: #0a0c10;
+}
+.slide-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1080px;
+  height: 1080px;
+  transform: scale(0.555);
+  transform-origin: top left;
+  border: 0;
+  pointer-events: none;
+}
+.slide-info {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
-.info-block {
-  flex: 1;
-}
-.info-label {
+.slide-label {
   font-family: 'Space Mono', monospace;
   font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #4b5563;
-  margin-bottom: 6px;
+  color: #ff4d1a;
+  margin-bottom: 4px;
 }
-.info-value {
-  font-family: 'Space Mono', monospace;
-  font-size: 18px;
+.slide-title {
+  font-size: 16px;
   font-weight: 700;
   color: #fff;
 }
-
-.foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 22px;
-  margin-top: 22px;
+.arrow {
+  font-family: 'Space Mono', monospace;
+  color: #4b5563;
+  font-size: 18px;
+}
+.footer {
+  text-align: center;
+  padding-top: 32px;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 .author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.av {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ff4d1a, #ff8c42);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
   font-size: 14px;
-  color: #fff;
-}
-.an {
-  font-size: 14px;
-  font-weight: 600;
   color: #d1d5db;
+  margin-bottom: 4px;
 }
-.as {
-  font-size: 11px;
+.author a {
+  color: #ff4d1a;
+  text-decoration: none;
+}
+.sub-footer {
+  font-size: 12px;
   color: #4b5563;
 }
-.swipe {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  color: #4b5563;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+
+@media (max-width: 900px) {
+  .slides { grid-template-columns: 1fr; }
+  h1 { font-size: 36px; }
 }
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="glow1"></div>
-  <div class="glow2"></div>
-  <div class="inner">
+<div class="wrap">
 
-    <div class="top">
-      <div class="tag">Road to Milan</div>
-      <div class="countdown">
-        <div class="cd-num">5d</div>
-        <div class="cd-lab">For Race Day</div>
+  <div class="header">
+    <div class="tag">Post 02 · LinkedIn Data Stories</div>
+    <h1>Road to <span>Milan</span> — Race Plan</h1>
+    <p class="desc">Mi primera maratón en datos. 12 semanas de preparación y el plan de carrera visualizado.</p>
+  </div>
+
+  <div class="slides">
+
+    <a href="slide-1/" class="slide-card">
+      <div class="slide-frame">
+        <iframe src="slide-1/" scrolling="no"></iframe>
       </div>
-    </div>
-
-    <div class="pre">— 12 semanas de preparación</div>
-    <h1>Mi <span>primera</span><br>maratón.</h1>
-    <p class="sub">El domingo cruzo la línea de salida en Milán. Y tengo una ilusión que no me cabe en el pecho.</p>
-
-    <div class="numbers">
-      <div class="n"><div class="nv">517<span class="u"> km</span></div><div class="nl">Recorridos</div></div>
-      <div class="n"><div class="nv">47<span class="u"> h</span></div><div class="nl">De entreno</div></div>
-      <div class="n"><div class="nv">12<span class="u"> sem</span></div><div class="nl">Preparación</div></div>
-      <div class="n"><div class="nv">7</div><div class="nl">Long runs</div></div>
-      <div class="n"><div class="nv">32<span class="u"> km</span></div><div class="nl">Longest run</div></div>
-    </div>
-
-    <div class="target">
-      <div>
-        <div class="t-l">Marathon time target</div>
-        <div class="t-v">3:27 — 3:34</div>
-      </div>
-      <div class="t-badge">Sub 3:30 target</div>
-    </div>
-
-    <div class="race-info">
-      <div class="info-block">
-        <div class="info-label">Race</div>
-        <div class="info-value">Wizz Air Milano Marathon</div>
-      </div>
-      <div class="info-block">
-        <div class="info-label">Date</div>
-        <div class="info-value">12 abr 2026</div>
-      </div>
-      <div class="info-block">
-        <div class="info-label">Distance</div>
-        <div class="info-value">42.195 km</div>
-      </div>
-    </div>
-
-    <div class="foot">
-      <div class="author">
-        <div class="av">AS</div>
+      <div class="slide-info">
         <div>
-          <div class="an">Alejandro Suárez</div>
-          <div class="as">Ingeniero · Corredor · Data nerd</div>
+          <div class="slide-label">Slide 01</div>
+          <div class="slide-title">Mi primera maratón</div>
         </div>
+        <div class="arrow">→</div>
       </div>
-      <div class="swipe">Swipe →</div>
-    </div>
+    </a>
+
+    <a href="slide-2/" class="slide-card">
+      <div class="slide-frame">
+        <iframe src="slide-2/" scrolling="no"></iframe>
+      </div>
+      <div class="slide-info">
+        <div>
+          <div class="slide-label">Slide 02</div>
+          <div class="slide-title">El plan · Sub 3:30</div>
+        </div>
+        <div class="arrow">→</div>
+      </div>
+    </a>
 
   </div>
+
+  <div class="footer">
+    <div class="author">Alejandro Suárez · <a href="https://www.linkedin.com/in/suarezalejandro/" target="_blank">LinkedIn</a></div>
+    <div class="sub-footer">Wizz Air Milano Marathon · 12 abril 2026</div>
+  </div>
+
 </div>
 </body>
 </html>
