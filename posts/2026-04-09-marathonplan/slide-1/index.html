@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Road to Milan — Slide 1</title>
+<title>Road to Milan — Slide 1 (2160x2160)</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;800;900&family=Space+Mono:wght@400;700&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -10,14 +10,14 @@ body {
   background: #06060a;
   display: flex;
   justify-content: center;
-  padding: 32px 16px;
+  padding: 64px 32px;
   font-family: 'DM Sans', sans-serif;
 }
 .card {
-  width: 1080px;
-  height: 1080px;
+  width: 2160px;
+  height: 2160px;
   background: #0a0c10;
-  border-radius: 12px;
+  border-radius: 24px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -28,26 +28,26 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 36px 36px;
+    linear-gradient(rgba(255,255,255,0.015) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 2px, transparent 2px);
+  background-size: 72px 72px;
   z-index: 0;
 }
 .glow1 {
   position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 500px;
-  height: 500px;
+  top: -200px;
+  right: -200px;
+  width: 1000px;
+  height: 1000px;
   background: radial-gradient(circle, rgba(255,77,26,0.12) 0%, transparent 70%);
   z-index: 0;
 }
 .glow2 {
   position: absolute;
-  bottom: -80px;
-  left: -80px;
-  width: 400px;
-  height: 400px;
+  bottom: -160px;
+  left: -160px;
+  width: 800px;
+  height: 800px;
   background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
   z-index: 0;
 }
@@ -55,7 +55,7 @@ body {
 .inner {
   position: relative;
   z-index: 1;
-  padding: 56px 60px;
+  padding: 112px 120px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -65,22 +65,22 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 36px;
+  margin-bottom: 72px;
 }
 .tag {
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 3px;
+  font-size: 22px;
+  letter-spacing: 6px;
   text-transform: uppercase;
   color: #ff4d1a;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
 }
 .tag::before {
   content: '';
-  width: 20px;
-  height: 1px;
+  width: 40px;
+  height: 2px;
   background: #ff4d1a;
 }
 .countdown {
@@ -88,59 +88,59 @@ body {
 }
 .cd-num {
   font-family: 'Space Mono', monospace;
-  font-size: 48px;
+  font-size: 96px;
   font-weight: 700;
   color: #ff4d1a;
   line-height: 1;
 }
 .cd-lab {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
+  font-size: 20px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: #4b5563;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .pre {
   font-family: 'Space Mono', monospace;
-  font-size: 13px;
-  letter-spacing: 2px;
+  font-size: 26px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: #4b5563;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 h1 {
-  font-size: 84px;
+  font-size: 168px;
   font-weight: 900;
   color: #f0f0f0;
   line-height: 0.92;
-  letter-spacing: -2.5px;
-  margin-bottom: 22px;
+  letter-spacing: -5px;
+  margin-bottom: 44px;
 }
 h1 span {
   color: #ff4d1a;
 }
 .sub {
-  font-size: 19px;
+  font-size: 38px;
   color: #9ca3af;
   font-weight: 300;
   line-height: 1.5;
-  max-width: 780px;
+  max-width: 1560px;
 }
 
 /* 5 Big numbers */
 .numbers {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  margin: 34px 0 0;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 68px 0 0;
+  border: 2px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
   background: rgba(255,255,255,0.015);
   overflow: hidden;
 }
 .n {
-  padding: 22px 14px;
+  padding: 44px 28px;
   text-align: center;
   position: relative;
 }
@@ -150,51 +150,51 @@ h1 span {
   right: 0;
   top: 18%;
   height: 64%;
-  width: 1px;
+  width: 2px;
   background: rgba(255,255,255,0.06);
 }
 .nv {
   font-family: 'Space Mono', monospace;
-  font-size: 32px;
+  font-size: 64px;
   font-weight: 700;
   color: #fff;
   line-height: 1;
 }
 .nv .u {
-  font-size: 13px;
+  font-size: 26px;
   color: #4b5563;
   font-weight: 400;
 }
 .nl {
-  font-size: 10px;
+  font-size: 20px;
   text-transform: uppercase;
-  letter-spacing: 1.6px;
+  letter-spacing: 3.2px;
   color: #4b5563;
-  margin-top: 6px;
+  margin-top: 12px;
 }
 
 /* Target box */
 .target {
-  margin-top: 20px;
+  margin-top: 40px;
   background: linear-gradient(135deg, rgba(255,77,26,0.1), rgba(255,77,26,0.02));
-  border: 1px solid rgba(255,77,26,0.25);
-  border-radius: 12px;
-  padding: 22px 28px;
+  border: 2px solid rgba(255,77,26,0.25);
+  border-radius: 24px;
+  padding: 44px 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .t-l {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: 20px;
   color: #ff7a56;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 .t-v {
   font-family: 'Space Mono', monospace;
-  font-size: 38px;
+  font-size: 76px;
   font-weight: 700;
   color: #fff;
   line-height: 1;
@@ -202,37 +202,37 @@ h1 span {
 .t-badge {
   background: #ff4d1a;
   color: #fff;
-  padding: 10px 18px;
-  border-radius: 24px;
+  padding: 20px 36px;
+  border-radius: 48px;
   font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 /* Race info strip */
 .race-info {
   display: flex;
-  gap: 32px;
+  gap: 64px;
   margin-top: auto;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 48px;
+  border-top: 2px solid rgba(255,255,255,0.06);
 }
 .info-block {
   flex: 1;
 }
 .info-label {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
+  font-size: 20px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: #4b5563;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 .info-value {
   font-family: 'Space Mono', monospace;
-  font-size: 18px;
+  font-size: 36px;
   font-weight: 700;
   color: #fff;
 }
@@ -241,41 +241,41 @@ h1 span {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 22px;
-  margin-top: 22px;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 44px;
+  margin-top: 44px;
+  border-top: 2px solid rgba(255,255,255,0.06);
 }
 .author {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 24px;
 }
 .av {
-  width: 38px;
-  height: 38px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   background: linear-gradient(135deg, #ff4d1a, #ff8c42);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 28px;
   color: #fff;
 }
 .an {
-  font-size: 14px;
+  font-size: 28px;
   font-weight: 600;
   color: #d1d5db;
 }
 .as {
-  font-size: 11px;
+  font-size: 22px;
   color: #4b5563;
 }
 .swipe {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: 20px;
   color: #4b5563;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   text-transform: uppercase;
 }
 </style>
@@ -296,9 +296,9 @@ h1 span {
 
     <div class="pre">— 12 semanas de preparación</div>
     <h1>Mi <span>primera</span><br>maratón.</h1>
-    <p class="sub">El domingo corro en Milán. 
+    <p class="sub">El domingo corro en Milán. <br>
       42,2 km. Muchos meses y kilómetros...
-        </p>
+    </p>
 
     <div class="numbers">
       <div class="n"><div class="nv">517<span class="u"> km</span></div><div class="nl">Recorridos</div></div>
