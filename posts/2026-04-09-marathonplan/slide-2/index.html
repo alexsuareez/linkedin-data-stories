@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maratón de Milán 2026 — Estrategia (2160x2160)</title>
+<title>Maratón de Milán 2026 — Estrategia (Escalado Perfecto a 2160)</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&family=Space+Mono:wght@400;700&display=swap');
 
@@ -14,36 +14,44 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 64px 32px;
+    min-height: 2160px; 
     font-family: 'DM Sans', sans-serif;
   }
 
-  /* ── CARD ── */
-  .card {
+  /* ── CONTENEDOR PARA ESCALAR A 2160 ── */
+  .scale-wrapper {
     width: 2160px;
     height: 2160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* ── CARD ORIGINAL ── */
+  .card {
+    width: 1080px;
+    height: 1080px;
     background: #080c12;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border-radius: 24px; /* Añadido para que coincida con la Slide 1 si lo necesitas, si no, puedes quitarlo */
+    transform: scale(2); 
+    transform-origin: center;
   }
 
-  /* top accent */
   .card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 8px;
+    height: 4px;
     background: #ff4d1a;
     z-index: 10;
   }
 
   /* ── HEADER ── */
   .header {
-    padding: 56px 72px 0;
+    padding: 20px 36px 0; /* Reducido para subir la tabla */
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -51,46 +59,45 @@
   }
 
   .eyebrow {
-    font-size: 56px;
+    font-size: 28px;
     font-weight: 700;
     color: #ff4d1a;
-    letter-spacing: 5px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
   }
 
   .title {
-    font-size: 44px;
+    font-size: 22px;
     font-weight: 700;
     color: #fff;
-    letter-spacing: -0.6px;
+    letter-spacing: -0.3px;
     line-height: 1.15;
   }
 
-  /* zone legend */
   .legend {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px 44px;
+    gap: 6px 22px;
     align-items: center;
-    padding-top: 8px;
+    padding-top: 4px;
   }
 
   .legend-item {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 7px;
   }
 
   .legend-dot {
-    width: 22px;
-    height: 22px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
     flex-shrink: 0;
   }
 
   .legend-label {
-    font-size: 24px;
+    font-size: 12px;
     color: #6b7e94;
     white-space: nowrap;
   }
@@ -99,8 +106,8 @@
   .body {
     display: flex;
     flex: 1;
-    padding: 28px 36px 0 36px;
-    gap: 28px;
+    padding: 10px 18px 24px 18px; /* Subida la tabla y añadido espacio abajo para que no pise el footer */
+    gap: 14px;
     min-height: 0;
   }
 
@@ -119,281 +126,105 @@
     height: 100%;
   }
 
-  /* Column widths */
-  col.c-tramo   { width: 240px; }
-  col.c-ritmo   { width: 180px; }
-  col.c-parcial { width: 180px; }
-  col.c-total   { width: 180px; }
-  col.c-fc      { width: 180px; }
-  col.c-zona    { width: 180px; }
-  col.c-sens    { width: 180px; }
+  col.c-tramo   { width: 120px; }
+  col.c-ritmo   { width: 90px; }
+  col.c-parcial { width: 90px; }
+  col.c-total   { width: 90px; }
+  col.c-fc      { width: 90px; }
+  col.c-zona    { width: 90px; }
+  col.c-sens    { width: 90px; }
 
   thead th {
-    font-size: 24px;
+    font-size: 12px;
     font-weight: 700;
     color: #4a5e72;
-    letter-spacing: 3.6px;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
-    padding: 0 0 16px 12px;
+    padding: 0 0 8px 6px;
     text-align: left;
-    border-bottom: 2px solid #1a2535;
+    border-bottom: 1px solid #1a2535;
   }
 
   thead th.center { text-align: center; }
 
-  tbody tr {
-    border-bottom: 2px solid #111b27;
-  }
+  tbody tr { border-bottom: 1px solid #111b27; }
+  tbody tr:nth-child(odd) { background: rgba(13, 24, 34, 0.6); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 0 6px; vertical-align: middle; }
+  tbody tr { height: calc((100% - 44px) / 9); }
 
-  tbody tr:nth-child(odd) {
-    background: rgba(13, 24, 34, 0.6);
-  }
-
-  tbody tr:last-child {
-    border-bottom: none;
-  }
-
-  tbody td {
-    padding: 0 12px;
-    vertical-align: middle;
-  }
-
-  tbody tr {
-    height: calc((100% - 88px) / 9);
-  }
-
-  .td-tramo {
-    font-size: 28px;
-    font-weight: 700;
-    color: #c8d6e0;
-    letter-spacing: 0.4px;
-  }
-
-  .td-ritmo {
-    font-family: 'Space Mono', monospace;
-    font-size: 28px;
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-  }
-
-  .td-parcial, .td-total {
-    font-family: 'Space Mono', monospace;
-    font-size: 28px;
-    color: #7a8fa0;
-    text-align: center;
-  }
-
-  .td-fc {
-    text-align: center;
-  }
+  .td-tramo { font-size: 14px; font-weight: 700; color: #c8d6e0; letter-spacing: 0.2px; }
+  .td-ritmo { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; color: #fff; text-align: center; }
+  .td-parcial, .td-total { font-family: 'Space Mono', monospace; font-size: 14px; color: #7a8fa0; text-align: center; }
+  .td-fc { text-align: center; }
 
   .fc-pill {
     display: inline-block;
     font-family: 'Space Mono', monospace;
-    font-size: 28px;
+    font-size: 14px;
     font-weight: 700;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
     background: rgba(255,255,255,0.04);
-    border: 2px solid;
+    border: 1px solid;
     white-space: nowrap;
   }
 
-  .td-zona {
-    text-align: center;
-  }
+  .td-zona { text-align: center; }
 
   .zona-dot {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    font-size: 18px;
+    font-size: 9px;
     font-weight: 700;
     color: #fff;
   }
 
-  .td-sens {
-    font-size: 28px;
-    color: #6b7e94;
-    padding-left: 16px;
-  }
+  .td-sens { font-size: 14px; color: #6b7e94; padding-left: 8px; }
 
-  /* total row */
   .total-row {
-    border-top: 4px solid #ff4d1a !important;
+    border-top: 2px solid #ff4d1a !important;
     border-bottom: none !important;
     background: transparent !important;
   }
 
-  .total-row td {
-    height: 88px;
-    padding-top: 4px;
-  }
-
-  .total-label {
-    font-size: 28px;
-    font-weight: 700;
-    color: #4a5e72;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-  }
-
-  .total-avg {
-    font-family: 'Space Mono', monospace;
-    font-size: 28px;
-    color: #8a9fb2;
-    text-align: center;
-  }
-
-  .total-time {
-    font-family: 'Space Mono', monospace;
-    font-size: 32px;
-    font-weight: 700;
-    color: #ff4d1a;
-    text-align: center;
-  }
-
-  .total-target {
-    font-size: 24px;
-    font-weight: 700;
-    color: #34d399;
-    text-align: center;
-  }
+  .total-row td { height: 44px; padding-top: 2px; }
+  .total-label { font-size: 14px; font-weight: 700; color: #4a5e72; letter-spacing: 1.5px; text-transform: uppercase; }
+  .total-avg { font-family: 'Space Mono', monospace; font-size: 14px; color: #8a9fb2; text-align: center; }
+  .total-time { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; color: #ff4d1a; text-align: center; }
+  .total-target { font-size: 12px; font-weight: 700; color: #34d399; text-align: center; }
 
   /* ── RIGHT COLUMN ── */
-  .right-col {
-    width: 376px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding-bottom: 0;
-  }
-
-  .section-label {
-    font-size: 24px;
-    font-weight: 700;
-    color: #4a5e72;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 2px solid #1a2535;
-  }
-
-  .parciales {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-bottom: 28px;
-  }
-
-  .parcial-item {
-    display: flex;
-    align-items: stretch;
-    gap: 20px;
-    padding: 14px 0;
-    border-bottom: 2px solid #111b27;
-  }
-
+  .right-col { width: 188px; flex-shrink: 0; display: flex; flex-direction: column; gap: 0; padding-bottom: 0; }
+  .section-label { font-size: 12px; font-weight: 700; color: #4a5e72; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #1a2535; }
+  .parciales { display: flex; flex-direction: column; gap: 0; margin-bottom: 14px; }
+  .parcial-item { display: flex; align-items: stretch; gap: 10px; padding: 7px 0; border-bottom: 1px solid #111b27; }
   .parcial-item:last-child { border-bottom: none; }
+  .parcial-bar { width: 5px; border-radius: 2px; flex-shrink: 0; }
+  .parcial-label { font-size: 12px; font-weight: 700; color: #4a5e72; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; }
+  .parcial-value { font-family: 'Space Mono', monospace; font-size: 15px; font-weight: 700; color: #fff; line-height: 1; }
+  .target-box { background: rgba(255, 77, 26, 0.1); border: 1px solid rgba(255, 77, 26, 0.35); border-radius: 6px; padding: 12px 14px; margin-bottom: 14px; }
+  .target-eyebrow { font-size: 8.5px; font-weight: 700; color: #ff4d1a; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .target-value { font-size: 26px; font-weight: 800; color: #ff4d1a; line-height: 1; margin-bottom: 2px; }
+  .target-sub { font-size: 12px; color: rgba(255,77,26,0.7); }
+  .notes-label { font-size: 12px; font-weight: 700; color: #4a5e72; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 7px; }
+  .notes-list { display: flex; flex-direction: column; gap: 5px; }
+  .note-item { font-size: 12px; color: #6b7e94; display: flex; gap: 6px; }
+  .note-item::before { content: '—'; color: #2a3f55; flex-shrink: 0; }
 
-  .parcial-bar {
-    width: 10px;
-    border-radius: 4px;
-    flex-shrink: 0;
-  }
-
-  .parcial-label {
-    font-size: 24px;
-    font-weight: 700;
-    color: #4a5e72;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-
-  .parcial-value {
-    font-family: 'Space Mono', monospace;
-    font-size: 30px;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-  }
-
-  /* target box */
-  .target-box {
-    background: rgba(255, 77, 26, 0.1);
-    border: 2px solid rgba(255, 77, 26, 0.35);
-    border-radius: 12px;
-    padding: 24px 28px;
-    margin-bottom: 28px;
-  }
-
-  .target-eyebrow {
-    font-size: 17px;
-    font-weight: 700;
-    color: #ff4d1a;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .target-value {
-    font-size: 52px;
-    font-weight: 800;
-    color: #ff4d1a;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .target-sub {
-    font-size: 24px;
-    color: rgba(255,77,26,0.7);
-  }
-
-  /* notes */
-  .notes-label {
-    font-size: 24px;
-    font-weight: 700;
-    color: #4a5e72;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-
-  .notes-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .note-item {
-    font-size: 24px;
-    color: #6b7e94;
-    display: flex;
-    gap: 12px;
-  }
-
-  .note-item::before {
-    content: '—';
-    color: #2a3f55;
-    flex-shrink: 0;
-  }
-
-  /* ── FOOTER ── */
+  /* ── FOOTER CORREGIDO ── */
   .footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 48px;
-    height: 124px;
+    padding: 0 24px;
+    height: 62px;
     background: #060a0f;
-    border-top: 2px solid #1a2535;
+    border-top: 1px solid #1a2535;
     flex-shrink: 0;
     margin-top: auto;
   }
@@ -401,48 +232,48 @@
   .author {
     display: flex;
     align-items: center;
-    gap: 48px;
+    gap: 16px;
   }
 
   .avatar {
-    width: 152px;
-    height: 152px;
+    width: 38px;  /* Ajustado de 76px a 38px */
+    height: 38px; /* Ajustado de 76px a 38px */
     border-radius: 50%;
     background: #ff4d1a;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 56px;
+    font-size: 14px; /* Ajustado de 28px a 14px */
     font-weight: 800;
     color: #fff;
     flex-shrink: 0;
   }
 
   .author-name {
-    font-size: 56px;
+    font-size: 16px; /* Ajustado de 28px a 16px */
     font-weight: 600;
     color: #d1d5db;
     line-height: 1.2;
   }
 
   .author-sub {
-    font-size: 44px;
+    font-size: 12px; /* Ajustado de 22px a 12px */
     color: #4b5563;
   }
 
   .tags {
     display: flex;
-    gap: 16px;
+    gap: 8px;
     align-items: center;
   }
 
   .htag {
-    font-size: 20px;
+    font-size: 10px;
     color: #6b7e94;
     background: #111b27;
-    border: 2px solid #1e2e40;
-    border-radius: 8px;
-    padding: 10px 20px;
+    border: 1px solid #1e2e40;
+    border-radius: 4px;
+    padding: 5px 10px;
     white-space: nowrap;
   }
 
@@ -456,97 +287,99 @@
 </head>
 <body>
 
-<div class="card">
+<div class="scale-wrapper">
+  <div class="card">
 
-  <div class="header">
-    <div class="header-left">
-      <div class="eyebrow">Maratón de Milán &middot; 2026</div>
-      <div class="title">Mi plan. </div>
-    </div>
-    <div class="legend">
-      <div class="legend-item">
-        <div class="legend-dot" style="background:#3b82f6"></div>
-        <span class="legend-label">Z2 Aeróbico</span>
+    <div class="header">
+      <div class="header-left">
+        <div class="eyebrow">Maratón de Milán &middot; 2026</div>
+        <div class="title">Mi plan. </div>
       </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background:#34d399"></div>
-        <span class="legend-label">Z3 Tempo</span>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#3b82f6"></div>
+          <span class="legend-label">Z2 Aeróbico</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#34d399"></div>
+          <span class="legend-label">Z3 Tempo</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#fbbf24"></div>
+          <span class="legend-label">Z4 Umbral</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#ef4444"></div>
+          <span class="legend-label">Z5 VO2max</span>
+        </div>
       </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background:#fbbf24"></div>
-        <span class="legend-label">Z4 Umbral</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background:#ef4444"></div>
-        <span class="legend-label">Z5 VO2max</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="body">
-
-    <div class="table-wrap">
-      <table>
-        <colgroup>
-          <col class="c-tramo">
-          <col class="c-ritmo">
-          <col class="c-parcial">
-          <col class="c-total">
-          <col class="c-fc">
-          <col class="c-zona">
-          <col class="c-sens">
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Tramo</th>
-            <th class="center">Ritmo</th>
-            <th class="center">Parcial</th>
-            <th class="center">Total</th>
-            <th class="center">FC Obj.</th>
-            <th class="center">Zona</th>
-            <th>Sensación</th>
-          </tr>
-        </thead>
-        <tbody id="splits-body">
-          </tbody>
-      </table>
     </div>
 
-    <div class="right-col">
-      <div class="section-label">Parciales clave</div>
+    <div class="body">
 
-      <div class="parciales" id="parciales">
+      <div class="table-wrap">
+        <table>
+          <colgroup>
+            <col class="c-tramo">
+            <col class="c-ritmo">
+            <col class="c-parcial">
+            <col class="c-total">
+            <col class="c-fc">
+            <col class="c-zona">
+            <col class="c-sens">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Tramo</th>
+              <th class="center">Ritmo</th>
+              <th class="center">Parcial</th>
+              <th class="center">Total</th>
+              <th class="center">FC Obj.</th>
+              <th class="center">Zona</th>
+              <th>Sensación</th>
+            </tr>
+          </thead>
+          <tbody id="splits-body">
+            </tbody>
+        </table>
+      </div>
+
+      <div class="right-col">
+        <div class="section-label">Parciales clave</div>
+
+        <div class="parciales" id="parciales">
+          </div>
+
+        <div class="target-box">
+          <div class="target-eyebrow">Target</div>
+          <div class="target-value">Sub 3:30</div>
+          <div class="target-sub">Objetivo A</div>
         </div>
 
-      <div class="target-box">
-        <div class="target-eyebrow">Target</div>
-        <div class="target-value">Sub 3:30</div>
-        <div class="target-sub">Objetivo A</div>
+        <div class="notes-label">Notas</div>
+        <div class="notes-list">
+          <div class="note-item">Geles: 25 gr cada 30 min</div>
+        </div>
       </div>
 
-      <div class="notes-label">Notas</div>
-      <div class="notes-list">
-        <div class="note-item">Geles: 25 gr cada 30 min</div>
+    </div>
+
+    <div class="footer">
+      <div class="author">
+        <div class="avatar">AS</div>
+        <div>
+          <div class="author-name">Alejandro Suárez</div>
+          <div class="author-sub">Engineer · Runner · Data</div>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="htag">#DataVisualization</span>
+        <span class="htag">#Running</span>
+        <span class="htag accent">🏃 Road to Milan</span>
       </div>
     </div>
 
   </div>
-
-  <div class="footer">
-    <div class="author">
-      <div class="avatar">AS</div>
-      <div>
-        <div class="author-name">Alejandro Suárez</div>
-        <div class="author-sub">Engineer · Runner · Data</div>
-      </div>
-    </div>
-    <div class="tags">
-      <span class="htag">#DataVisualization</span>
-      <span class="htag">#Running</span>
-      <span class="htag accent">🏃 Road to Milan</span>
-    </div>
-  </div>
-
 </div>
 
 <script>
@@ -580,7 +413,7 @@ splits.forEach(r => {
         <span class="fc-pill" style="color:${r.zonaColor};background:${fcBg};border-color:${fcBorder}">${r.fc}</span>
       </td>
       <td class="td-zona">
-        <span class="zona-dot" style="background:${r.zonaColor}22;border:3px solid ${r.zonaColor};color:${r.zonaColor}">${r.zona}</span>
+        <span class="zona-dot" style="background:${r.zonaColor}22;border:1.5px solid ${r.zonaColor};color:${r.zonaColor}">${r.zona}</span>
       </td>
       <td class="td-sens">${r.sens}</td>
     </tr>
