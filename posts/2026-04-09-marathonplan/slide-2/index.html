@@ -52,7 +52,7 @@
   .header-left {}
 
   .eyebrow {
-    font-size: 10px;
+    font-size: 28px;
     font-weight: 700;
     color: #ff4d1a;
     letter-spacing: 2.5px;
@@ -61,7 +61,7 @@
   }
 
   .title {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
     color: #fff;
     letter-spacing: -0.3px;
@@ -91,7 +91,7 @@
   }
 
   .legend-label {
-    font-size: 10.5px;
+    font-size: 12px;
     color: #6b7e94;
     white-space: nowrap;
   }
@@ -123,14 +123,14 @@
   /* Column widths */
   col.c-tramo   { width: 120px; }
   col.c-ritmo   { width: 90px; }
-  col.c-parcial { width: 76px; }
-  col.c-total   { width: 84px; }
-  col.c-fc      { width: 100px; }
-  col.c-zona    { width: 58px; }
+  col.c-parcial { width: 90x; }
+  col.c-total   { width: 90px; }
+  col.c-fc      { width: 90px; }
+  col.c-zona    { width: 90px; }
   col.c-sens    { width: auto; }
 
   thead th {
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 700;
     color: #4a5e72;
     letter-spacing: 1.8px;
@@ -164,7 +164,7 @@
   }
 
   .td-tramo {
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
     color: #c8d6e0;
     letter-spacing: 0.2px;
@@ -172,7 +172,7 @@
 
   .td-ritmo {
     font-family: 'Space Mono', monospace;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     color: #fff;
     text-align: center;
@@ -180,7 +180,7 @@
 
   .td-parcial, .td-total {
     font-family: 'Space Mono', monospace;
-    font-size: 11px;
+    font-size: 14px;
     color: #7a8fa0;
     text-align: center;
   }
@@ -192,7 +192,7 @@
   .fc-pill {
     display: inline-block;
     font-family: 'Space Mono', monospace;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 700;
     padding: 4px 8px;
     border-radius: 4px;
@@ -218,7 +218,7 @@
   }
 
   .td-sens {
-    font-size: 11px;
+    font-size: 14px;
     color: #6b7e94;
     padding-left: 8px;
   }
@@ -236,7 +236,7 @@
   }
 
   .total-label {
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 700;
     color: #4a5e72;
     letter-spacing: 1.5px;
@@ -245,14 +245,14 @@
 
   .total-avg {
     font-family: 'Space Mono', monospace;
-    font-size: 11px;
+    font-size: 14px;
     color: #8a9fb2;
     text-align: center;
   }
 
   .total-time {
     font-family: 'Space Mono', monospace;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     color: #ff4d1a;
     text-align: center;
@@ -276,7 +276,7 @@
   }
 
   .section-label {
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 700;
     color: #4a5e72;
     letter-spacing: 2px;
@@ -312,7 +312,7 @@
   .parcial-info {}
 
   .parcial-label {
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 700;
     color: #4a5e72;
     letter-spacing: 1px;
@@ -355,13 +355,13 @@
   }
 
   .target-sub {
-    font-size: 10px;
+    font-size: 12px;
     color: rgba(255,77,26,0.7);
   }
 
   /* notes */
   .notes-label {
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 700;
     color: #4a5e72;
     letter-spacing: 2px;
@@ -376,7 +376,7 @@
   }
 
   .note-item {
-    font-size: 10px;
+    font-size: 12px;
     color: #6b7e94;
     display: flex;
     gap: 6px;
@@ -464,8 +464,8 @@
   <!-- HEADER -->
   <div class="header">
     <div class="header-left">
-      <div class="eyebrow">Maratón de Milán 2026</div>
-      <div class="title">Estrategia de carrera &middot; Plan de splits</div>
+      <div class="eyebrow">Maratón de Milán &middot; 2026</div>
+      <div class="title">Mi plan. </div>
     </div>
     <div class="legend">
       <div class="legend-item">
@@ -535,10 +535,8 @@
 
       <div class="notes-label">Notas</div>
       <div class="notes-list">
-        <div class="note-item">Geles: km 18, 27, 35</div>
-        <div class="note-item">No acelerar antes del km 30</div>
-        <div class="note-item">Cadencia objetivo &gt;175 spm</div>
-      </div>
+        <div class="note-item">Geles: 25 gr cada 30 min</div>
+            </div>
     </div>
 
   </div>
@@ -566,22 +564,19 @@
 // EDITA AQUÍ — splits de carrera
 // ════════════════════════════════════════════
 const splits = [
-  { tramo: "0 – 5 km",   ritmo: "5:05/km", parcial: "25:25", total: "0:25:25", fc: "145–150", zona: "Z2", zonaColor: "#3b82f6", sens: "Calma, sin agobios" },
+  { tramo: "0 – 5 km",   ritmo: "5:05/km", parcial: "25:25", total: "0:25:25", fc: "145–150", zona: "Z2", zonaColor: "#3b82f6", sens: "Calma" },
   { tramo: "5 – 10 km",  ritmo: "5:02/km", parcial: "25:10", total: "0:50:35", fc: "148–153", zona: "Z2", zonaColor: "#3b82f6", sens: "Entrando en ritmo" },
-  { tramo: "10 – 15 km", ritmo: "4:59/km", parcial: "24:55", total: "1:15:30", fc: "152–157", zona: "Z3", zonaColor: "#34d399", sens: "Cómodo, fluido" },
-  { tramo: "15 – 21 km", ritmo: "4:58/km", parcial: "29:48", total: "1:45:18", fc: "154–159", zona: "Z3", zonaColor: "#34d399", sens: "Control, no acelerar" },
-  { tramo: "21 – 25 km", ritmo: "4:57/km", parcial: "19:48", total: "2:05:06", fc: "156–161", zona: "Z3", zonaColor: "#34d399", sens: "A mitad, mantener" },
-  { tramo: "25 – 30 km", ritmo: "4:56/km", parcial: "24:40", total: "2:29:46", fc: "158–163", zona: "Z3", zonaColor: "#34d399", sens: "Crítico, foco total" },
-  { tramo: "30 – 35 km", ritmo: "4:55/km", parcial: "24:35", total: "2:54:21", fc: "160–165", zona: "Z4", zonaColor: "#fbbf24", sens: "Gestiona el muro" },
-  { tramo: "35 – 40 km", ritmo: "4:53/km", parcial: "24:25", total: "3:18:46", fc: "163–168", zona: "Z4", zonaColor: "#fbbf24", sens: "Todo lo que quede" },
-  { tramo: "40 – 42.2",  ritmo: "4:48/km", parcial: "10:33", total: "3:29:19", fc: "168–178", zona: "Z5", zonaColor: "#ef4444", sens: "Vaciar el depósito" },
+  { tramo: "10 – 21 km", ritmo: "4:58/km", parcial: "54:38", total: "1:45:13", fc: "152–156", zona: "Z3", zonaColor: "#34d399", sens: "Fluido, no acelerar" },
+  { tramo: "21 – 30 km", ritmo: "4:56/km", parcial: "44:24", total: "2:29:37", fc: "157–163", zona: "Z3", zonaColor: "#34d399", sens: "Mitad, controlar" },
+  { tramo: "30 – 35 km", ritmo: "4:55/km", parcial: "24:35", total: "2:54:21", fc: "163–168", zona: "Z4", zonaColor: "#fbbf24", sens: "Gestiona el muro" },
+  { tramo: "35 – 42.2 km", ritmo: "4:53/km", parcial: "35:10", total: "3:29:22", fc: "169–175", zona: "Z4", zonaColor: "#fbbf24", sens: "Vacíarse" },
+  
 ];
 
 const parciales = [
   { label: "10K",   value: "50:35",   color: "#3b82f6" },
-  { label: "Media", value: "1:45:18", color: "#34d399" },
-  { label: "30K",   value: "2:29:46", color: "#fbbf24" },
-  { label: "40K",   value: "3:18:46", color: "#ef4444" },
+  { label: "Media", value: "1:45:13", color: "#34d399" },
+  { label: "30K",   value: "2:29:37", color: "#fbbf24" },
   { label: "Meta",  value: "3:29:19", color: "#ff4d1a" },
 ];
 // ════════════════════════════════════════════
@@ -614,7 +609,7 @@ tbody.innerHTML += `
     <td class="total-label">Total</td>
     <td class="total-avg">~4:58/km avg</td>
     <td></td>
-    <td class="total-time">3:29:19</td>
+    <td class="total-time">3:29:22</td>
     <td class="total-target" colspan="3">SUB 3:30 ✓</td>
   </tr>
 `;
