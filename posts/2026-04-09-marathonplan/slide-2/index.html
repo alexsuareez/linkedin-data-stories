@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maratón de Milán 2026 — Estrategia</title>
+<title>Maratón de Milán 2026 — Estrategia (2160x2160)</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&family=Space+Mono:wght@400;700&display=swap');
 
@@ -16,18 +15,20 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 64px 32px;
     font-family: 'DM Sans', sans-serif;
   }
 
   /* ── CARD ── */
   .card {
-    width: 1080px;
-    height: 1080px;
+    width: 2160px;
+    height: 2160px;
     background: #080c12;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    border-radius: 24px; /* Añadido para que coincida con la Slide 1 si lo necesitas, si no, puedes quitarlo */
   }
 
   /* top accent */
@@ -35,36 +36,34 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 4px;
+    height: 8px;
     background: #ff4d1a;
     z-index: 10;
   }
 
   /* ── HEADER ── */
   .header {
-    padding: 28px 36px 0;
+    padding: 56px 72px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-shrink: 0;
   }
 
-  .header-left {}
-
   .eyebrow {
-    font-size: 28px;
+    font-size: 56px;
     font-weight: 700;
     color: #ff4d1a;
-    letter-spacing: 2.5px;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
   }
 
   .title {
-    font-size: 22px;
+    font-size: 44px;
     font-weight: 700;
     color: #fff;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.6px;
     line-height: 1.15;
   }
 
@@ -72,26 +71,26 @@
   .legend {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px 22px;
+    gap: 12px 44px;
     align-items: center;
-    padding-top: 4px;
+    padding-top: 8px;
   }
 
   .legend-item {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 14px;
   }
 
   .legend-dot {
-    width: 11px;
-    height: 11px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     flex-shrink: 0;
   }
 
   .legend-label {
-    font-size: 12px;
+    font-size: 24px;
     color: #6b7e94;
     white-space: nowrap;
   }
@@ -100,8 +99,8 @@
   .body {
     display: flex;
     flex: 1;
-    padding: 14px 18px 0 18px;
-    gap: 14px;
+    padding: 28px 36px 0 36px;
+    gap: 28px;
     min-height: 0;
   }
 
@@ -121,29 +120,29 @@
   }
 
   /* Column widths */
-  col.c-tramo   { width: 120px; }
-  col.c-ritmo   { width: 90px; }
-  col.c-parcial { width: 90x; }
-  col.c-total   { width: 90px; }
-  col.c-fc      { width: 90px; }
-  col.c-zona    { width: 90px; }
-  col.c-sens    { width: 90px; }
+  col.c-tramo   { width: 240px; }
+  col.c-ritmo   { width: 180px; }
+  col.c-parcial { width: 180px; }
+  col.c-total   { width: 180px; }
+  col.c-fc      { width: 180px; }
+  col.c-zona    { width: 180px; }
+  col.c-sens    { width: 180px; }
 
   thead th {
-    font-size: 12px;
+    font-size: 24px;
     font-weight: 700;
     color: #4a5e72;
-    letter-spacing: 1.8px;
+    letter-spacing: 3.6px;
     text-transform: uppercase;
-    padding: 0 0 8px 6px;
+    padding: 0 0 16px 12px;
     text-align: left;
-    border-bottom: 1px solid #1a2535;
+    border-bottom: 2px solid #1a2535;
   }
 
   thead th.center { text-align: center; }
 
   tbody tr {
-    border-bottom: 1px solid #111b27;
+    border-bottom: 2px solid #111b27;
   }
 
   tbody tr:nth-child(odd) {
@@ -155,24 +154,24 @@
   }
 
   tbody td {
-    padding: 0 6px;
+    padding: 0 12px;
     vertical-align: middle;
   }
 
   tbody tr {
-    height: calc((100% - 44px) / 9);
+    height: calc((100% - 88px) / 9);
   }
 
   .td-tramo {
-    font-size: 14px;
+    font-size: 28px;
     font-weight: 700;
     color: #c8d6e0;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.4px;
   }
 
   .td-ritmo {
     font-family: 'Space Mono', monospace;
-    font-size: 14px;
+    font-size: 28px;
     font-weight: 700;
     color: #fff;
     text-align: center;
@@ -180,7 +179,7 @@
 
   .td-parcial, .td-total {
     font-family: 'Space Mono', monospace;
-    font-size: 14px;
+    font-size: 28px;
     color: #7a8fa0;
     text-align: center;
   }
@@ -192,12 +191,12 @@
   .fc-pill {
     display: inline-block;
     font-family: 'Space Mono', monospace;
-    font-size: 14px;
+    font-size: 28px;
     font-weight: 700;
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 8px 16px;
+    border-radius: 8px;
     background: rgba(255,255,255,0.04);
-    border: 1px solid;
+    border: 2px solid;
     white-space: nowrap;
   }
 
@@ -209,57 +208,57 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    font-size: 9px;
+    font-size: 18px;
     font-weight: 700;
     color: #fff;
   }
 
   .td-sens {
-    font-size: 14px;
+    font-size: 28px;
     color: #6b7e94;
-    padding-left: 8px;
+    padding-left: 16px;
   }
 
   /* total row */
   .total-row {
-    border-top: 2px solid #ff4d1a !important;
+    border-top: 4px solid #ff4d1a !important;
     border-bottom: none !important;
     background: transparent !important;
   }
 
   .total-row td {
-    height: 44px;
-    padding-top: 2px;
+    height: 88px;
+    padding-top: 4px;
   }
 
   .total-label {
-    font-size: 14px;
+    font-size: 28px;
     font-weight: 700;
     color: #4a5e72;
-    letter-spacing: 1.5px;
+    letter-spacing: 3px;
     text-transform: uppercase;
   }
 
   .total-avg {
     font-family: 'Space Mono', monospace;
-    font-size: 14px;
+    font-size: 28px;
     color: #8a9fb2;
     text-align: center;
   }
 
   .total-time {
     font-family: 'Space Mono', monospace;
-    font-size: 16px;
+    font-size: 32px;
     font-weight: 700;
     color: #ff4d1a;
     text-align: center;
   }
 
   .total-target {
-    font-size: 12px;
+    font-size: 24px;
     font-weight: 700;
     color: #34d399;
     text-align: center;
@@ -267,7 +266,7 @@
 
   /* ── RIGHT COLUMN ── */
   .right-col {
-    width: 188px;
+    width: 376px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -276,53 +275,51 @@
   }
 
   .section-label {
-    font-size: 12px;
+    font-size: 24px;
     font-weight: 700;
     color: #4a5e72;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #1a2535;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #1a2535;
   }
 
   .parciales {
     display: flex;
     flex-direction: column;
     gap: 0;
-    margin-bottom: 14px;
+    margin-bottom: 28px;
   }
 
   .parcial-item {
     display: flex;
     align-items: stretch;
-    gap: 10px;
-    padding: 7px 0;
-    border-bottom: 1px solid #111b27;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 2px solid #111b27;
   }
 
   .parcial-item:last-child { border-bottom: none; }
 
   .parcial-bar {
-    width: 5px;
-    border-radius: 2px;
+    width: 10px;
+    border-radius: 4px;
     flex-shrink: 0;
   }
 
-  .parcial-info {}
-
   .parcial-label {
-    font-size: 12px;
+    font-size: 24px;
     font-weight: 700;
     color: #4a5e72;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
 
   .parcial-value {
     font-family: 'Space Mono', monospace;
-    font-size: 15px;
+    font-size: 30px;
     font-weight: 700;
     color: #fff;
     line-height: 1;
@@ -331,55 +328,55 @@
   /* target box */
   .target-box {
     background: rgba(255, 77, 26, 0.1);
-    border: 1px solid rgba(255, 77, 26, 0.35);
-    border-radius: 6px;
-    padding: 12px 14px;
-    margin-bottom: 14px;
+    border: 2px solid rgba(255, 77, 26, 0.35);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
   }
 
   .target-eyebrow {
-    font-size: 8.5px;
+    font-size: 17px;
     font-weight: 700;
     color: #ff4d1a;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
 
   .target-value {
-    font-size: 26px;
+    font-size: 52px;
     font-weight: 800;
     color: #ff4d1a;
     line-height: 1;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
 
   .target-sub {
-    font-size: 12px;
+    font-size: 24px;
     color: rgba(255,77,26,0.7);
   }
 
   /* notes */
   .notes-label {
-    font-size: 12px;
+    font-size: 24px;
     font-weight: 700;
     color: #4a5e72;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    margin-bottom: 7px;
+    margin-bottom: 14px;
   }
 
   .notes-list {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
   }
 
   .note-item {
-    font-size: 12px;
+    font-size: 24px;
     color: #6b7e94;
     display: flex;
-    gap: 6px;
+    gap: 12px;
   }
 
   .note-item::before {
@@ -393,10 +390,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
-    height: 62px;
+    padding: 0 48px;
+    height: 124px;
     background: #060a0f;
-    border-top: 1px solid #1a2535;
+    border-top: 2px solid #1a2535;
     flex-shrink: 0;
     margin-top: auto;
   }
@@ -404,48 +401,48 @@
   .author {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 48px;
   }
 
   .avatar {
-    width: 76px;
-    height: 76px;
+    width: 152px;
+    height: 152px;
     border-radius: 50%;
     background: #ff4d1a;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 56px;
     font-weight: 800;
     color: #fff;
     flex-shrink: 0;
   }
 
   .author-name {
-    font-size: 28px;
+    font-size: 56px;
     font-weight: 600;
     color: #d1d5db;
     line-height: 1.2;
   }
 
   .author-sub {
-    font-size: 22px;
+    font-size: 44px;
     color: #4b5563;
   }
 
   .tags {
     display: flex;
-    gap: 8px;
+    gap: 16px;
     align-items: center;
   }
 
   .htag {
-    font-size: 10px;
+    font-size: 20px;
     color: #6b7e94;
     background: #111b27;
-    border: 1px solid #1e2e40;
-    border-radius: 4px;
-    padding: 5px 10px;
+    border: 2px solid #1e2e40;
+    border-radius: 8px;
+    padding: 10px 20px;
     white-space: nowrap;
   }
 
@@ -461,7 +458,6 @@
 
 <div class="card">
 
-  <!-- HEADER -->
   <div class="header">
     <div class="header-left">
       <div class="eyebrow">Maratón de Milán &middot; 2026</div>
@@ -487,10 +483,8 @@
     </div>
   </div>
 
-  <!-- BODY -->
   <div class="body">
 
-    <!-- TABLE -->
     <div class="table-wrap">
       <table>
         <colgroup>
@@ -514,18 +508,15 @@
           </tr>
         </thead>
         <tbody id="splits-body">
-          <!-- rows injected by JS — edit the splits array below -->
-        </tbody>
+          </tbody>
       </table>
     </div>
 
-    <!-- RIGHT COLUMN -->
     <div class="right-col">
       <div class="section-label">Parciales clave</div>
 
       <div class="parciales" id="parciales">
-        <!-- injected by JS -->
-      </div>
+        </div>
 
       <div class="target-box">
         <div class="target-eyebrow">Target</div>
@@ -536,12 +527,11 @@
       <div class="notes-label">Notas</div>
       <div class="notes-list">
         <div class="note-item">Geles: 25 gr cada 30 min</div>
-            </div>
+      </div>
     </div>
 
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     <div class="author">
       <div class="avatar">AS</div>
@@ -560,9 +550,6 @@
 </div>
 
 <script>
-// ════════════════════════════════════════════
-// EDITA AQUÍ — splits de carrera
-// ════════════════════════════════════════════
 const splits = [
   { tramo: "0 – 5 km",   ritmo: "5:05/km", parcial: "25:25", total: "0:25:25", fc: "145–150", zona: "Z2", zonaColor: "#3b82f6", sens: "Calma" },
   { tramo: "5 – 10 km",  ritmo: "5:02/km", parcial: "25:10", total: "0:50:35", fc: "148–153", zona: "Z2", zonaColor: "#3b82f6", sens: "Entrando en ritmo" },
@@ -570,7 +557,6 @@ const splits = [
   { tramo: "21 – 30 km", ritmo: "4:56/km", parcial: "44:24", total: "2:29:37", fc: "157–163", zona: "Z3", zonaColor: "#34d399", sens: "Mitad, controlar" },
   { tramo: "30 – 35 km", ritmo: "4:55/km", parcial: "24:35", total: "2:54:21", fc: "163–168", zona: "Z4", zonaColor: "#fbbf24", sens: "Gestiona el muro" },
   { tramo: "35 – 42.2 km", ritmo: "4:53/km", parcial: "35:10", total: "3:29:22", fc: "169–175", zona: "Z4", zonaColor: "#fbbf24", sens: "Vacíarse" },
-  
 ];
 
 const parciales = [
@@ -579,9 +565,7 @@ const parciales = [
   { label: "30K",   value: "2:29:37", color: "#fbbf24" },
   { label: "Meta",  value: "3:29:22", color: "#ff4d1a" },
 ];
-// ════════════════════════════════════════════
 
-// Render splits table
 const tbody = document.getElementById('splits-body');
 splits.forEach(r => {
   const fcBg = r.zonaColor + '22';
@@ -596,7 +580,7 @@ splits.forEach(r => {
         <span class="fc-pill" style="color:${r.zonaColor};background:${fcBg};border-color:${fcBorder}">${r.fc}</span>
       </td>
       <td class="td-zona">
-        <span class="zona-dot" style="background:${r.zonaColor}22;border:1.5px solid ${r.zonaColor};color:${r.zonaColor}">${r.zona}</span>
+        <span class="zona-dot" style="background:${r.zonaColor}22;border:3px solid ${r.zonaColor};color:${r.zonaColor}">${r.zona}</span>
       </td>
       <td class="td-sens">${r.sens}</td>
     </tr>
