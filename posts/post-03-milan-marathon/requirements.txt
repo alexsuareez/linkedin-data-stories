@@ -1,0 +1,2 @@
+fitparse>=1.0.3
+numpy>=1.24.0
